@@ -1,0 +1,5 @@
+name = Read Path
+description = Creates a path of new forum posts for the user to follow.
+dependencies[] = advanced_forum
+dependencies[] = views
+core = 6.x

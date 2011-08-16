@@ -1,0 +1,75 @@
+<?php
+
+class ReadPathTestCase extends DrupalWebTestCase {
+ protected $privileged_user;
+ public static function getInfo() {
+    return array(
+      'name' => t('Readpath Test'),
+      'description' => t('Ensure that readpath module provides functions properly.'),
+      'group' => t('Readpath'),
+    );
+  }
+
+
+
+ public function setUp() {
+
+    global $base_url, $db_prefix;
+    if (!isset($this->ch)) {
+      $this->ch = curl_init();
+
+
+      $this->assertTrue(TRUE, "Curl options has been set!");
+    }
+    else {
+      $this->assertTrue(FALSE, "Curl options not set..");
+    }
+    $this->assertTrue(TRUE, "Making curlConnect");
+  }
+}
+    // Enable any modules required for the test.
+/*    parent::setUp('forum',
+                   'author_pane',
+		               'taxonomy',
+		               'comment',
+		               'advanced_forum',
+		               'views'
+//		               'readpath');
+		               );
+
+    // Create and log in our privileged user.
+    $this->privileged_user = $this->drupalCreateUser( array('create forum topics', 'edit own forum topics', 'delete own forum topics', 'access content','access all readpath settings','access comments','post comments','post comments without approval'));
+    $this->drupalLogin($this->privileged_user);
+  }
+
+
+ public function testCreate() {
+    // Create node to edit.
+    $edit = array();
+    $edit['title'] = $this->randomName(8);
+    $edit['body'] = $this->randomName(16);
+    $this->drupalPost('node/add/forum', $edit, t('Save'));
+    $this->assertText(t('readpath page @title has been created.', array('@title' => $edit['title'])));
+  }
+*/
+/* public function testForumTopicEdit() {
+    $settings = array(
+      'type' => 'forum',
+      'title' => $this->randomName(32),
+      'body' => $this->randomName(64),
+    );
+    $node = $this->drupalCreateNode($settings);
+
+    // For debugging, we might output the node structure with $this->verbose().
+    // It would only be output if the testing settings had 'verbose' set.
+    $this->verbose('Node created: ' . var_export($node, TRUE));
+
+
+      // Make sure we don't get a 401 unauthorized response when editing.
+      $this->drupalGet("node/{$node->nid}/edit");
+      $this->assertResponse(200, t('User is allowed to edit the content.'));
+      // Looking for title text in the page to determine whether we were
+      // successful opening edit form.
+      $this->assertText(t("@title", array('@title' => $settings['title'])), "Found title in edit form");
+  }*/
+}

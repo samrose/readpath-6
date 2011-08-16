@@ -1,0 +1,56 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the readpath module.
+ */
+
+function readpath_schema() {
+  $schema['readpath_ignored_nodes'] = array(
+    'description' => 'ignored nodes from readpath settings.',
+      'fields' => array(
+        'uid' => array(
+          'description' => 'id of the user',
+          'type' => 'int',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+          'default' => 0 ),
+         'nid' => array(
+          'description' => 'id of the node',
+          'type' => 'int',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+          'default' => 0 ),
+        ),
+     ); 
+  $schema['readpath_ignored_terms'] = array(
+    'description' => 'ignored terms from readpath settings.',
+      'fields' => array(
+        'uid' => array(
+          'description' => 'id of the user',
+          'type' => 'int',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+          'default' => 0 ),
+         'tid' => array(
+          'description' => 'id of the term',
+          'type' => 'int',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+          'default' => 0),
+        ),
+     ); 
+
+          
+    return $schema;
+}
+
+function readpath_install() {
+  drupal_install_schema('readpath');
+}
+
+function readpath_uninstall() {
+  drupal_uninstall_schema('readpath');
+  variable_del('readpath_types');
+}
+
